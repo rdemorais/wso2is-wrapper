@@ -63,9 +63,7 @@ Receives as parameter the user to be registered against IS.
 - Change password
 - SAML connection for federate login
 
-[downloads-image]: http://img.shields.io/npm/dm/soap.svg
 [npm-url]: https://npmjs.org/package/wso2is-wrapper
-[npm-image]: http://img.shields.io/npm/v/soap.svg
+[npm-image]: https://img.shields.io/npm/v/wso2is-wrapper.svg
 
-[travis-url]: https://travis-ci.org/vpulim/node-soap
-[travis-image]: http://img.shields.io/travis/vpulim/node-soap.svg
+[downloads-image]: https://img.shields.io/npm/dm/wso2is-wrapper.svg
