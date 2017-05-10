@@ -1,4 +1,4 @@
-## WSO2 Identity Server Wrapper
+# WSO2 Identity Server Wrapper [![NPM version][npm-image]][npm-url] [![Downloads][downloads-image]][npm-url]
 
 This module aim to act as a wrapper to WSO2 Identity Server APIs.
 
@@ -62,3 +62,10 @@ Receives as parameter the user to be registered against IS.
 - AdminForcePasswordReset
 - Change password
 - SAML connection for federate login
+
+[downloads-image]: http://img.shields.io/npm/dm/soap.svg
+[npm-url]: https://npmjs.org/package/wso2is-wrapper
+[npm-image]: http://img.shields.io/npm/v/soap.svg
+
+[travis-url]: https://travis-ci.org/vpulim/node-soap
+[travis-image]: http://img.shields.io/travis/vpulim/node-soap.svg
