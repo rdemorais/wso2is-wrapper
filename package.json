@@ -1,6 +1,6 @@
 {
   "name": "wso2is-wrapper",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Wrapper to integrate with WSO2 Identity Server APIs",
   "main": "src/wso2is-wrapper.js",
   "scripts": {
