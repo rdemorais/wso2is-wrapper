@@ -20,7 +20,11 @@ var WSO2Wrapper = function(config) {
                     config.host + ":" + 
                     config.port + 
                     config.newUserEndpoint, args, function (data, response) {
-                resolve(response.statusCode);
+                var results = {
+                    data: data,
+                    code: response.statusCode
+                }
+                resolve(results);
             });
 
             req.on('requestTimeout', function (req) {

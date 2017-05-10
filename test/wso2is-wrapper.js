@@ -19,8 +19,8 @@ describe('#newUser', function() {
     it('adding a new user', function(done) {
         var user = {"user": {"username": "rdemorais.freitas@gmail.com","realm": "PRIMARY", "password": "123456","roles":["CLIENTE_SIMULADOR"],"claims": [{"uri": "http://wso2.org/claims/givenname","value": "Rafael" },{"uri": "http://wso2.org/claims/emailaddress","value": "rdemorais.freitas@gmail.com"},{"uri": "http://wso2.org/claims/lastname","value": "Morais"},{"uri": "http://wso2.org/claims/mobile","value": "1234"} ] },"properties": []};
         addNewUser(user)
-        .then(function(code) {
-            expect(code).to.equal(201);
+        .then(function(results) {
+            expect(results.code).to.equal(201);
             done();
         }).catch(function(err) {
             done(err);
