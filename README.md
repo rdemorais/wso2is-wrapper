@@ -8,7 +8,7 @@ This module aim to act as a wrapper to WSO2 Identity Server APIs.
 
 - Open your favorite editor and type:
 
-``` json
+``` javascript
 var config = {
     "protocol": "https",
     "host": "[HOST]",
@@ -18,6 +18,21 @@ var config = {
 }
 
 var wso2isWrapper = require('wso2is-wrapper')(config);
+
+/*
+* results = {
+*   data: "[DATA FROM Identity Server]",
+*   code: "[RESPONSE CODE]"    
+* }
+
+* add new user
+*/
+addNewUser(user)
+    .then(function(results) {
+        
+    }).catch(function(err) {
+
+    });
 ```
 
 ### Methods
