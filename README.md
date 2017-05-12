@@ -14,10 +14,15 @@ var config = {
     "host": "[HOST]",
     "port": "[PORT]",
     "basicAuth": "[BASE64 user:pass]",
-    "newUserEndpoint": "/api/identity/user/v0.9/me"
+    "clientId": "[CLIENT ID]",
+    "client_secret": "[ClIENT SECRET]",
+    "newUserEndpoint": "/api/identity/user/v0.9/me",
+    "oauthTokenEndpoint": "/oauth2/token"
 }
 
 var wso2isWrapper = require('wso2is-wrapper')(config);
+var addNewUser = wso2isWrapper.addNewUser;
+var login = wso2isWrapper.login;
 
 /*
 * results = {
@@ -36,6 +41,17 @@ addNewUser(user)
 ```
 
 ### Methods
+
+#### login
+
+To log into the system with credentials use this method. This one consider the password flow
+
+``` json
+{
+    "username": "foo",
+    "password": "123456"
+}
+```
 
 #### addNewUser
 

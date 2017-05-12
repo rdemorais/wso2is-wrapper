@@ -8,12 +8,29 @@ var config = {
     "host": "[HOST]",
     "port": "[PORT]",
     "basicAuth": "[BASE64 user:pass]",
-    "newUserEndpoint": "/api/identity/user/v0.9/me"
+    "clientId": "[CLIENT ID]",
+    "client_secret": "[ClIENT SECRET]",
+    "newUserEndpoint": "/api/identity/user/v0.9/me",
+    "oauthTokenEndpoint": "/oauth2/token"
 }
 
 var wso2isWrapper = require('../src/wso2is-wrapper')(config);
 var addNewUser = wso2isWrapper.addNewUser;
-var sendRecoveryNotification = wso2isWrapper.sendRecoveryNotification;
+var login = wso2isWrapper.login;
+
+describe('#login', function() {
+    it('login', function(done) {
+        var user = {"username": "rdemorais.freitas@gmail.com", "password": "123456"};
+        login(user)
+        .then(function(results) {
+            expect(results.code).to.equal(200);
+            console.log(results);
+            done();
+        }).catch(function(err) {
+            done(err);
+        });
+    });
+});
 
 describe('#newUser', function() {
     it('adding a new user', function(done) {
@@ -27,22 +44,3 @@ describe('#newUser', function() {
         });
     });
 });
-
-// describe('#updatePassword', function() {
-//     it('update user password', function(done) {
-//         var updatePw = {"key": uuidV4(), "password": "654321","properties": []};
-//     });
-// });
-
-// describe('#sendRecoveryNotification', function() {
-//     it('sending notification to recovery password', function(done) {
-//         var recovery = {"user": {"username": "rdemorais.freitas@gmail.com","realm": "PRIMARY","tenant-domain":"carbon.super"},"properties": []}
-//         sendRecoveryNotification(recovery)
-//         .then(function(code) {
-//             expect(code).to.equal(200);
-//             done();
-//         }).catch(function(err) {
-//             done(err);
-//         });
-//     });
-// });

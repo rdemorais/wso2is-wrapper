@@ -4,22 +4,13 @@ var Client = require('node-rest-client').Client;
 
 var WSO2Wrapper = function(config) {
     var client = new Client();
-    var args = {
-        data: "",
-        headers: { 
-            "Content-Type": "application/json",
-            "Authorization": "Basic " + config.basicAuth
-        }
-    };
-
-    this.addNewUser = function(user) {
+    var wso2Call = function(endpoint, args) {
         return new Promise(function(resolve, reject) {
-            args.data = user;
             var req = client.post(
                     config.protocol + "://"+ 
                     config.host + ":" + 
                     config.port + 
-                    config.newUserEndpoint, args, function (data, response) {
+                    endpoint, args, function (data, response) {
                 var results = {
                     data: data,
                     code: response.statusCode
@@ -36,6 +27,37 @@ var WSO2Wrapper = function(config) {
                 reject(err);
             });
         });
+    }
+
+    this.login = function(user) {
+        var args = {
+            parameters: {
+                "client_id": config.clientId,
+                "client_secret": config.clientSecret
+            },
+            data: {
+                "grant_type": "password",
+                "username": user.username,
+                "password": user.password
+            },
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded"
+            }
+        }
+
+        return wso2Call(config.oauthTokenEndpoint, args);
+    }
+
+    this.addNewUser = function(user) {
+        var args = {
+            data: user,
+            headers: { 
+                "Content-Type": "application/json",
+                "Authorization": "Basic " + config.basicAuth
+            }
+        };
+
+        return wso2Call(config.newUserEndpoint, args);
     }
 }
 
